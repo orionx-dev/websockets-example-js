@@ -6,9 +6,9 @@ import onDeleted from './onDeleted'
 import { set } from './state'
 
 export default async function () {
-  const channel = pusher.subscribe('prod-BTCCLP-orderbook')
+  const channel = pusher.subscribe('prod-BTCCLP-orderBook')
   try {
-    const orderbook = await Orionx.marketOrderBook({ marketCode: 'BTCCLP' })
+    const orderbook = await Orionx.marketOrderBook({ marketCode: 'BTCCLP', limit: 100 })
     set(orderbook)
     channel.bind('new', onNew)
     channel.bind('updated', onUpdated)
