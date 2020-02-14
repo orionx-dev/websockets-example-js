@@ -8,7 +8,7 @@ import { set } from './state'
 export default async function () {
   const channel = pusher.subscribe('prod-BTCCLP-orderbook')
   try {
-    const orderbook = await Orionx.orderbook({ code: 'BTCCLP' })
+    const orderbook = await Orionx.marketOrderBook({ code: 'BTCCLP' })
     set(orderbook)
     channel.bind('new', onNew)
     channel.bind('updated', onUpdated)
