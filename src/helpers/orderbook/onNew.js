@@ -1,6 +1,5 @@
 import { get, set } from './state'
 
-// Todo: mejoras de performance, implementar búsqueda binaria
 export default function (newItem) {
   const orderBook = get()
   const key = newItem.sell ? 'sell' : 'buy'
