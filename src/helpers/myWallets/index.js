@@ -8,8 +8,6 @@ export default async function () {
   // Get my personal token
   const { token } = await orionx.requestRealtimeToken()
 
-  console.log('token is', token)
-
   // Connecto to my private channel
   const channel = pusher.subscribe(`private-${token}`)
 
