@@ -1,4 +1,4 @@
-import pusher from '../pusher'
+import pusher from '../../helpers/pusher'
 import newTrade from './newTrade'
 
 export default function () {

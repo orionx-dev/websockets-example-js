@@ -1,6 +1,6 @@
-import pusher from '../pusher'
-import update from './update'
-import orionx from '../orionx'
+import pusher from '../../helpers/pusher'
+import update from './../helpers/update'
+import orionx from '../../helpers/orionx'
 import { set, get } from './state'
 
 export default async function () {
@@ -12,17 +12,15 @@ export default async function () {
   const channel = pusher.subscribe(`private-${token}`)
 
   // Get my orders and set on state
-  const wallets = await orionx.wallets({})
-  // console.log(wallets)
-  for (const wallet of wallets) {
-    set(wallet.currency.code, wallet.balance)
-  }
+  const marketCode = 'CHACLP'
+  const orders = await orionx.openOrders({ marketCode: marketCode, limit: 200 })
+  set(marketCode, orders)
 
   // Bind to channel for updates
-  channel.bind('wallets', update)
+  channel.bind('orders', update)
 }
 
-// Helper function to log current tracked wallets every minute
+// Helper function to log current orders every minute
 function minute () {
   console.log('Minute starting')
   setTimeout(() => {

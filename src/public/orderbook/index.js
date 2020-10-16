@@ -1,5 +1,5 @@
-import pusher from '../pusher'
-import Orionx from '../orionx'
+import pusher from '../../helpers/pusher'
+import Orionx from '../../helpers/orionx'
 import onNew from './onNew'
 import onUpdated from './onUpdated'
 import onDeleted from './onDeleted'
