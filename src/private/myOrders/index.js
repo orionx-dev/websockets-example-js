@@ -1,5 +1,5 @@
 import pusher from '../../helpers/pusher'
-import update from './../helpers/update'
+import update from './update'
 import orionx from '../../helpers/orionx'
 import { set, get } from './state'
 
